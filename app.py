@@ -15,7 +15,13 @@ st.set_page_config(
 )
 
 # Initialize OpenAI client
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+# Try to get API key from Streamlit secrets first, then fall back to environment variable
+try:
+    api_key = st.secrets.get("OPENAI_API_KEY", os.getenv("OPENAI_API_KEY"))
+except:
+    api_key = os.getenv("OPENAI_API_KEY")
+
+client = OpenAI(api_key=api_key)
 
 # Custom CSS for action buttons
 st.markdown(

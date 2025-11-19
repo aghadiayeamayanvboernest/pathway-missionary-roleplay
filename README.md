@@ -91,10 +91,27 @@ python3 -m streamlit run app.py
 - **Memory**: Session-based (resets on browser refresh)
 - **API**: OpenAI Chat Completions API
 
+## Deployment to Streamlit Cloud
+
+### Steps to Deploy:
+
+1. Push your code to GitHub (make sure `.env` is in `.gitignore`)
+2. Go to [share.streamlit.io](https://share.streamlit.io)
+3. Click "New app" and select your repository
+4. **Important: Add your API key to Secrets**
+   - In the app settings, go to "Secrets"
+   - Add the following in TOML format:
+   ```toml
+   OPENAI_API_KEY = "your-api-key-here"
+   ```
+5. Click "Deploy"
+
+The app automatically handles both local `.env` files and Streamlit Cloud secrets.
+
 ## Notes
 
 - The conversation history is stored in Streamlit's session state and will be lost when you refresh the browser
 - Make sure your `.env` file is never committed to version control (already in `.gitignore`)
 - Ensure you have sufficient OpenAI API credits for GPT-5.1 usage
 - GPT-5.1 is OpenAI's newest flagship model with improved reasoning capabilities and faster response times
-- The app uses `reasoning: { "type": "none" }` for low-latency, fast responses without extended reasoning
+- The app uses `reasoning: { "effort": "none" }` for low-latency, fast responses without extended reasoning

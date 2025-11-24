@@ -173,6 +173,21 @@ st.markdown("""
         margin-bottom: 1rem;
     }
     
+    /* Dark mode support */
+    @media (prefers-color-scheme: dark) {
+        .view-selector {
+            background: rgb(14, 17, 23) !important;
+            border-bottom-color: #333 !important;
+        }
+    }
+    
+    /* Force dark mode for Streamlit's dark theme */
+    .stApp[data-theme="dark"] .view-selector,
+    [data-testid="stAppViewContainer"][data-theme="dark"] .view-selector {
+        background: rgb(14, 17, 23) !important;
+        border-bottom-color: #333 !important;
+    }
+    
     /* Reduce sidebar spacing */
     section[data-testid="stSidebar"] > div {
         padding-top: 1rem;

@@ -24,62 +24,163 @@ except:
 
 client = OpenAI(api_key=api_key)
 
-# Define available personas
-PERSONAS = {
-    "jorge": {
-        "name": "Jorge Vargas",
-        "description": "Jorge Vargas",
-        "prompt_file": "roleplay-content/prompts/jorge-system-prompt.md",
-        "hint": ""
+# Define available personas organized by region
+REGIONS = {
+    "Africa": {
+        "chinedu": {
+            "name": "Chinedu Okafor",
+            "description": "Chinedu Okafor",
+            "prompt_file": "roleplay-content/prompts/africa/chinedu-system-prompt.md",
+            "hint": ""
+        },
+        "amara": {
+            "name": "Amara Adeyemi",
+            "description": "Amara Adeyemi",
+            "prompt_file": "roleplay-content/prompts/africa/amara-system-prompt.md",
+            "hint": ""
+        },
+        "fatima": {
+            "name": "Fatima Hassan",
+            "description": "Fatima Hassan",
+            "prompt_file": "roleplay-content/prompts/africa/fatima-system-prompt.md",
+            "hint": ""
+        },
+        "zainab": {
+            "name": "Zainab Mohammed",
+            "description": "Zainab Mohammed",
+            "prompt_file": "roleplay-content/prompts/africa/zainab-system-prompt.md",
+            "hint": ""
+        },
+        "adeola": {
+            "name": "Adeola Taiwo",
+            "description": "Adeola Taiwo",
+            "prompt_file": "roleplay-content/prompts/africa/adeola-system-prompt.md",
+            "hint": ""
+        },
+        "aisha": {
+            "name": "Aisha Okafor",
+            "description": "Aisha Okafor",
+            "prompt_file": "roleplay-content/prompts/africa/aisha-system-prompt.md",
+            "hint": ""
+        },
+        "samuel": {
+            "name": "Samuel Mensah",
+            "description": "Samuel Mensah",
+            "prompt_file": "roleplay-content/prompts/africa/samuel-system-prompt.md",
+            "hint": ""
+        },
+        "chipo": {
+            "name": "Chipo Mwale",
+            "description": "Chipo Mwale",
+            "prompt_file": "roleplay-content/prompts/africa/chipo-system-prompt.md",
+            "hint": ""
+        }
     },
-    "katra": {
-        "name": "Katra",
-        "description": "Katra",
-        "prompt_file": "roleplay-content/prompts/katra-system-prompt.md",
-        "hint": ""
+    "South America": {
+        "jorge": {
+            "name": "Jorge Vargas",
+            "description": "Jorge Vargas",
+            "prompt_file": "roleplay-content/prompts/south-america/jorge-system-prompt.md",
+            "hint": ""
+        },
+        "rosa": {
+            "name": "Rosa Torres",
+            "description": "Rosa Torres",
+            "prompt_file": "roleplay-content/prompts/south-america/rosa-system-prompt.md",
+            "hint": ""
+        },
+        "vitoria": {
+            "name": "Vitoria Silva",
+            "description": "Vitoria Silva",
+            "prompt_file": "roleplay-content/prompts/south-america/vitoria-system-prompt.md",
+            "hint": ""
+        },
+        "carlos": {
+            "name": "Carlos Vargas",
+            "description": "Carlos Vargas",
+            "prompt_file": "roleplay-content/prompts/south-america/carlos-system-prompt.md",
+            "hint": ""
+        },
+        "ana": {
+            "name": "Ana Rodriguez",
+            "description": "Ana Rodriguez",
+            "prompt_file": "roleplay-content/prompts/south-america/ana-system-prompt.md",
+            "hint": ""
+        },
+        "daniela": {
+            "name": "Daniela Garcia",
+            "description": "Daniela Garcia",
+            "prompt_file": "roleplay-content/prompts/south-america/daniela-system-prompt.md",
+            "hint": ""
+        },
+        "sofia": {
+            "name": "Sofia Martinez",
+            "description": "Sofia Martinez",
+            "prompt_file": "roleplay-content/prompts/south-america/sofia-system-prompt.md",
+            "hint": ""
+        },
+        "isabella": {
+            "name": "Isabella Silva",
+            "description": "Isabella Silva",
+            "prompt_file": "roleplay-content/prompts/south-america/isabella-system-prompt.md",
+            "hint": ""
+        }
     },
-    "vitoria": {
-        "name": "Vitoria da Silva",
-        "description": "Vitoria da Silva",
-        "prompt_file": "roleplay-content/prompts/vitoria-system-prompt.md",
-        "hint": ""
-    },
-    "Aisha": {
-        "name": "Aisha Okafor",
-        "description": "Aisha Okafor",
-        "prompt_file": "roleplay-content/prompts/aisha-system-prompt.md",
-        "hint": ""
-    },
-        "Chipo": {
-        "name": "Chipo Mwale",
-        "description": "Chipo Mwale",
-        "prompt_file": "roleplay-content/prompts/chipo-system-prompt.md",
-        "hint": ""
-    },
-        "David": {
-        "name": "David Tui",
-        "description": "David Tui",
-        "prompt_file": "roleplay-content/prompts/david-system-prompt.md",
-        "hint": ""
-    },
-        "Maria": {
-        "name": "Maria Santos",
-        "description": "Maria Santos",
-        "prompt_file": "roleplay-content/prompts/maria-system-prompt.md",
-        "hint": ""
-    },
-        "Samuel": {
-        "name": "Samuel Mensah",
-        "description": " Samuel Mensah",
-        "prompt_file": "roleplay-content/prompts/samuel-system-prompt.md",
-        "hint": ""
+    "North America": {
+        "jordan": {
+            "name": "Jordan Peterson",
+            "description": "Jordan Peterson",
+            "prompt_file": "roleplay-content/prompts/north-america/jordan-system-prompt.md",
+            "hint": ""
+        },
+        "maria": {
+            "name": "Maria Hernandez",
+            "description": "Maria Hernandez",
+            "prompt_file": "roleplay-content/prompts/north-america/maria-system-prompt.md",
+            "hint": ""
+        },
+        "carmen": {
+            "name": "Carmen Lopez",
+            "description": "Carmen Lopez",
+            "prompt_file": "roleplay-content/prompts/north-america/carmen-system-prompt.md",
+            "hint": ""
+        },
+        "robert": {
+            "name": "Robert Jensen",
+            "description": "Robert Jensen",
+            "prompt_file": "roleplay-content/prompts/north-america/robert-system-prompt.md",
+            "hint": ""
+        },
+        "jennifer": {
+            "name": "Jennifer Williams",
+            "description": "Jennifer Williams",
+            "prompt_file": "roleplay-content/prompts/north-america/jennifer-system-prompt.md",
+            "hint": ""
+        },
+        "taylor": {
+            "name": "Taylor Anderson",
+            "description": "Taylor Anderson",
+            "prompt_file": "roleplay-content/prompts/north-america/taylor-system-prompt.md",
+            "hint": ""
+        },
+        "sarah": {
+            "name": "Sarah Thompson",
+            "description": "Sarah Thompson",
+            "prompt_file": "roleplay-content/prompts/north-america/sarah-system-prompt.md",
+            "hint": ""
+        },
+        "brittany": {
+            "name": "Brittany Clark",
+            "description": "Brittany Clark",
+            "prompt_file": "roleplay-content/prompts/north-america/brittany-system-prompt.md",
+            "hint": ""
+        }
     }
-    
 }
 
-def load_system_prompt(persona_key):
+def load_system_prompt(region, persona_key):
     try:
-        prompt_path = PERSONAS[persona_key]["prompt_file"]
+        prompt_path = REGIONS[region][persona_key]["prompt_file"]
         with open(prompt_path, 'r', encoding='utf-8') as f:
             return f.read()
     except Exception as e:
@@ -94,35 +195,35 @@ def load_grading_prompt():
         st.error(f"Error loading grading prompt: {str(e)}")
         return ""
 
-def format_conversation_transcript(messages, persona_key):
+def format_conversation_transcript(messages, region, persona_key):
     """
     Format the conversation transcript for evaluation.
-    
+
     Format:
     Student: [Student Name]
-    
+
     ## Full Conversation Transcript
-    
+
     **Missionary:** [what the missionary said]
-    
+
     **[Student Name]:** [what the student said]
-    
+
     **Missionary:** [what the missionary said next]
-    
+
     **[Student Name]:** [what the student said next]
     """
-    persona_name = PERSONAS[persona_key]["name"]
-    
+    persona_name = REGIONS[region][persona_key]["name"]
+
     # Start with student identification and header
     transcript = f"**Student:** {persona_name}\n\n## Full Conversation Transcript\n\n"
-    
+
     # Add each message in order with bold names
     for message in messages:
         if message["role"] == "user":
             transcript += f"**Missionary:** {message['content']}\n\n"
         elif message["role"] == "assistant":
             transcript += f"**{persona_name}:** {message['content']}\n\n"
-    
+
     return transcript
 
 # CSS
@@ -213,8 +314,14 @@ if "evaluating" not in st.session_state:
     st.session_state.evaluating = False
 if "show_confirm_dialog" not in st.session_state:
     st.session_state.show_confirm_dialog = False
+if "show_region_confirm_dialog" not in st.session_state:
+    st.session_state.show_region_confirm_dialog = False
+if "pending_region" not in st.session_state:
+    st.session_state.pending_region = None
+if "selected_region" not in st.session_state:
+    st.session_state.selected_region = "Africa"
 if "selected_persona" not in st.session_state:
-    st.session_state.selected_persona = "jorge"
+    st.session_state.selected_persona = "chinedu"  # First persona in Africa
 if "current_view" not in st.session_state:
     st.session_state.current_view = "Chat"
 if "show_eval_complete" not in st.session_state:
@@ -236,11 +343,51 @@ with st.sidebar:
 
     st.markdown("### 🔗 Resources")
     st.markdown("[Missionary Assistant App](https://missionary-chat.onrender.com)")
+
+    st.markdown("### Select Region")
+
+    region_options = list(REGIONS.keys())
     
+    # Initialize region_selector_widget if not exists
+    if "region_selector_widget" not in st.session_state:
+        st.session_state.region_selector_widget = st.session_state.selected_region
+    
+    selected_region = st.selectbox(
+        "Choose a region:",
+        region_options,
+        index=region_options.index(st.session_state.region_selector_widget),
+        key="region_selector"
+    )
+    
+    # Only process if this is a NEW selection and not during a dialog
+    if (selected_region != st.session_state.selected_region and 
+        not st.session_state.show_region_confirm_dialog):
+        
+        if len(st.session_state.messages) > 0:
+            # Has messages - show confirmation
+            st.session_state.pending_region = selected_region
+            st.session_state.show_region_confirm_dialog = True
+        else:
+            # No messages - change immediately
+            st.session_state.selected_region = selected_region
+            st.session_state.region_selector_widget = selected_region
+            first_persona = list(REGIONS[selected_region].keys())[0]
+            st.session_state.selected_persona = first_persona
+            st.session_state.evaluation_result = None
+            st.session_state.evaluation_metadata = None
+            st.session_state.current_view = "Chat"
+
     st.markdown("### Select Student")
 
-    persona_options = [PERSONAS[key]["description"] for key in PERSONAS.keys()]
-    persona_keys = list(PERSONAS.keys())
+    # Get personas for the selected region
+    region_personas = REGIONS[st.session_state.selected_region]
+    persona_options = [region_personas[key]["description"] for key in region_personas.keys()]
+    persona_keys = list(region_personas.keys())
+
+    # Ensure selected persona exists in current region
+    if st.session_state.selected_persona not in persona_keys:
+        st.session_state.selected_persona = persona_keys[0]
+
     current_index = persona_keys.index(st.session_state.selected_persona)
 
     selected_display = st.selectbox(
@@ -251,13 +398,13 @@ with st.sidebar:
     )
 
     new_persona_key = persona_keys[persona_options.index(selected_display)]
-    selected_persona_info = PERSONAS[new_persona_key]
 
     if new_persona_key != st.session_state.selected_persona:
         st.session_state.selected_persona = new_persona_key
         st.session_state.messages = []
         st.session_state.evaluation_result = None
         st.session_state.evaluation_metadata = None
+        st.session_state.current_view = "Chat"
         st.rerun()
 
     st.markdown("### Actions")
@@ -279,28 +426,29 @@ with st.sidebar:
                     # Format the conversation transcript
                     transcript = format_conversation_transcript(
                         st.session_state.messages,
+                        st.session_state.selected_region,
                         st.session_state.selected_persona
                     )
-                    
+
                     # Create the evaluation request with system prompt and transcript as user message
                     eval_messages = [
                         {"role": "system", "content": grading_prompt},
                         {"role": "user", "content": transcript}
                     ]
-                    
+
                     # Call the API
                     response = client.responses.create(
                         model="gpt-5.1",
                         input=eval_messages,
                         reasoning={"effort": "medium"}
                     )
-                    
+
                     # Store results
                     st.session_state.evaluation_result = response.output_text
                     st.session_state.evaluation_metadata = {
                         "timestamp": datetime.now().strftime("%B %d, %Y at %I:%M %p"),
                         "message_count": len(st.session_state.messages),
-                        "student_name": PERSONAS[st.session_state.selected_persona]["name"]
+                        "student_name": REGIONS[st.session_state.selected_region][st.session_state.selected_persona]["name"]
                     }
                     st.session_state.evaluating = False
                     st.session_state.current_view = "Evaluation"  # Auto-switch to Evaluation view
@@ -310,9 +458,37 @@ with st.sidebar:
             st.rerun()
 
     st.caption("💡 **Tip:** Take your time to build rapport and listen carefully to the student's concerns.")
-    st.caption(f"**Current Student:** {PERSONAS[st.session_state.selected_persona]['name']}")
+    st.caption(f"**Current Student:** {REGIONS[st.session_state.selected_region][st.session_state.selected_persona]['name']}")
 
-# Confirmation dialog
+# Region change confirmation dialog
+if st.session_state.show_region_confirm_dialog:
+    st.warning(f"⚠️ Are you sure you want to change to **{st.session_state.pending_region}**? This will clear your current chat and evaluation.")
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button("Yes, Change Region", type="primary", use_container_width=True):
+            st.session_state.selected_region = st.session_state.pending_region
+            st.session_state.region_selector_widget = st.session_state.pending_region
+            # Select first persona in the new region
+            first_persona = list(REGIONS[st.session_state.selected_region].keys())[0]
+            st.session_state.selected_persona = first_persona
+            st.session_state.messages = []
+            st.session_state.evaluation_result = None
+            st.session_state.evaluation_metadata = None
+            st.session_state.evaluating = False
+            st.session_state.show_region_confirm_dialog = False
+            st.session_state.pending_region = None
+            st.session_state.current_view = "Chat"
+            st.rerun()
+    with col2:
+        if st.button("Cancel", use_container_width=True):
+            # Reset selectbox widget to current region
+            st.session_state.region_selector_widget = st.session_state.selected_region
+            st.session_state.show_region_confirm_dialog = False
+            st.session_state.pending_region = None
+            st.rerun()
+    st.stop()
+
+# Conversation reset confirmation dialog
 if st.session_state.show_confirm_dialog:
     st.warning("⚠️ Are you sure you want to start a new conversation? This will clear your current chat and evaluation.")
     col1, col2 = st.columns(2)
@@ -362,12 +538,15 @@ if st.session_state.current_view == "Chat":
         st.markdown("### 👋 Welcome to Your Training Session")
         st.info(f"""
 **About This Exercise:**
-
+                
 You're about to practice a **New Student Orientation Visit** with an AI-simulated student. This is a safe space to build your confidence and improve your communication skills.
-
+**Getting Started:**
+1. **Select a Region** from the sidebar (Africa, South America, or North America)
+2. **Choose a Student** from that region to practice with
+                
 **Your Goal:**
 Help the student feel prepared, supported, and confident about starting their PathwayConnect journey.
-
+                
 **What to Do:**
 1. **Introduce yourself** as a BYU-Pathway missionary
 2. **Listen carefully** to the student's concerns and questions
@@ -376,7 +555,7 @@ Help the student feel prepared, supported, and confident about starting their Pa
 5. **Help them feel ready** to begin their program
 
 **Getting Feedback:**
-Click the **"📊 Evaluate"** button in the sidebar when ready for feedback.
+Click the **"📊 Evaluate"** button in the sidebar when ready for feedback on your conversation.
 
 **Ready?** Type your opening message below to begin the orientation visit.
         """)
@@ -399,7 +578,10 @@ Click the **"📊 Evaluate"** button in the sidebar when ready for feedback.
         with st.chat_message("assistant"):
             with st.spinner("Thinking..."):
                 try:
-                    system_prompt = load_system_prompt(st.session_state.selected_persona)
+                    system_prompt = load_system_prompt(
+                        st.session_state.selected_region,
+                        st.session_state.selected_persona
+                    )
                     api_messages = [{"role": "system", "content": system_prompt}]
                     api_messages.extend([{"role": msg["role"], "content": msg["content"]} for msg in st.session_state.messages])
                     response = client.responses.create(
@@ -433,6 +615,7 @@ elif st.session_state.current_view == "Evaluation":
         with st.expander("📄 View Conversation Transcript Sent for Evaluation"):
             transcript = format_conversation_transcript(
                 st.session_state.messages,
+                st.session_state.selected_region,
                 st.session_state.selected_persona
             )
             st.markdown(transcript)

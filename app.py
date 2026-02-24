@@ -178,11 +178,22 @@ REGIONS = {
     }
 }
 
+PACING_GUIDELINES_PATH = "roleplay-content/prompts/pacing-guidelines.md"
+
 def load_system_prompt(region, persona_key):
     try:
         prompt_path = REGIONS[region][persona_key]["prompt_file"]
         with open(prompt_path, 'r', encoding='utf-8') as f:
-            return f.read()
+            persona_prompt = f.read()
+
+        try:
+            with open(PACING_GUIDELINES_PATH, 'r', encoding='utf-8') as f:
+                pacing_guidelines = f.read()
+            return persona_prompt + "\n\n" + pacing_guidelines
+        except Exception as pacing_error:
+            st.warning(f"Pacing guidelines not loaded: {str(pacing_error)}")
+            return persona_prompt
+
     except Exception as e:
         st.error(f"Error loading persona prompt: {str(e)}")
         return ""
